@@ -33,7 +33,9 @@ const AxiosErrorHandler = ({ children }) => {
                 return Promise.reject(error);
             }
         );
-        
+
+        setLoading(false)
+
         return () => { 
             setLoading(false)    
             axiosPrivate.interceptors.request.eject(requestIntercept);
