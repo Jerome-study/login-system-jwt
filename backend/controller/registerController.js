@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 async function registerController(req,res) {
     const { username, password, confirmPassword } = req.body;
     if (!username, !password, !confirmPassword) return res.status(203).send({ message: "Please enter all fields" });
-    if (password !== confirmPassword) return res.send({ message: "Password do not match" });
+    if (password !== confirmPassword) return res.status(203).send({ message: "Password do not match" });
     try {
         const userExist = await pool.query('SELECT * FROM users WHERE username = $1', [username] );
         if (userExist.rows[0]) return res.status(203).send({ message: "User already exist" });

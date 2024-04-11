@@ -30,9 +30,17 @@ export const Navbar = () =>{
         <>
             { user }
             <Link  to={"/"}>Home</Link>
-            <Link  to={"/dashboard"}>Dashboard</Link>
-            <Link  to={"/profile"}>Profile</Link>
-            <Link  to={"/signin"}>Signin</Link>
+            { user ?  <>
+                <Link  to={"/dashboard"}>Dashboard</Link>
+                <Link  to={"/profile"}>Profile</Link>
+            </> : 
+
+           <>
+             <Link  to={"/signin"}>Signin</Link>
+            <Link  to={"/signup"}>Signup</Link>
+           </>
+            }
+           
         </>
     )
 }
